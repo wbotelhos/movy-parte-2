@@ -1,5 +1,4 @@
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Movy | Usu&aacute;rio [novo]</title>
 </head>
 <body>

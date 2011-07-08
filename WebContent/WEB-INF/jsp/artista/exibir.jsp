@@ -1,5 +1,4 @@
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Movy | Artista [exibir]</title>
 </head>
 <body>

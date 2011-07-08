@@ -1,10 +1,8 @@
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Movy</title>
-	</head>
-	<body>
-		<a href="${pageContext.request.contextPath}/">In&iacute;cio</a> |
+<head>
+	<title>Movy</title>
+</head>
+<body>
+	<a href="${pageContext.request.contextPath}/">In&iacute;cio</a> |
 	<a href="${pageContext.request.contextPath}/filme">Filmes</a> |
 	<a href="${pageContext.request.contextPath}/filme/novo">Novo Filme</a> |
 	<a href="${pageContext.request.contextPath}/artista">Artistas</a> |

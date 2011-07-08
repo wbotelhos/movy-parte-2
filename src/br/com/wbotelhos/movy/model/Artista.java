@@ -1,25 +1,15 @@
 package br.com.wbotelhos.movy.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import br.com.wbotelhos.movy.model.common.AbstractEntity;
 
 @Entity
-public class Artista {
+public class Artista extends AbstractEntity {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+	private static final long serialVersionUID = -2635061767717070792L;
 
 	private String nome;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;

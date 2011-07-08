@@ -1,29 +1,19 @@
 package br.com.wbotelhos.movy.model;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+
+import br.com.wbotelhos.movy.model.common.AbstractEntity;
 
 @Entity
-public class Filme {
+public class Filme extends AbstractEntity {
 
-	@Id
-	@GeneratedValue
-	private Long id;
+	private static final long serialVersionUID = -4144195690825990038L;
 
 	private Integer ano;
 	private String titulo;
 	private String tituloOriginal;
 	private String genero;
 	private String sinopse;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Integer getAno() {
 		return ano;

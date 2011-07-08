@@ -7,8 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.com.wbotelhos.movy.model.common.AbstractEntity;
+import br.com.wbotelhos.movy.repository.common.GenericRepository;
 
-public abstract class GenericBusiness<T extends AbstractEntity> {
+public abstract class GenericBusiness<T extends AbstractEntity> implements GenericRepository<T> {
 
 	protected final EntityManager manager;
 	protected final Class<T> clazz;

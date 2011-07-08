@@ -14,9 +14,9 @@ import org.mockito.Spy;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.Localization;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.wbotelhos.movy.business.ArtistaBusiness;
 import br.com.wbotelhos.movy.controller.ArtistaController;
 import br.com.wbotelhos.movy.model.Artista;
+import br.com.wbotelhos.movy.repository.ArtistaRepository;
 
 public class ArtistaControllerTest {
 
@@ -27,7 +27,7 @@ public class ArtistaControllerTest {
 	private Result result = new MockResult();
 
 	@Mock
-	private ArtistaBusiness business;
+	private ArtistaRepository repository;
 
 	@Mock
 	Localization localization;
@@ -35,7 +35,7 @@ public class ArtistaControllerTest {
 	@Before
 	public void setUp() throws IOException {
 		MockitoAnnotations.initMocks(this);
-		controller = new ArtistaController(result, business);
+		controller = new ArtistaController(result, repository);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class ArtistaControllerTest {
 		controller.editar(artista);
 
 		//then
-		artista = verify(business).loadById(artista.getId());
+		artista = verify(repository).loadById(artista.getId());
 		verify(result).include("artista", artista);
 	}
 
@@ -60,7 +60,7 @@ public class ArtistaControllerTest {
 		controller.editar(artista);
 
 		//then
-		artista = verify(business).loadById(artista.getId());
+		artista = verify(repository).loadById(artista.getId());
 		verify(result).include("artista", artista);
 	}
 
@@ -72,7 +72,7 @@ public class ArtistaControllerTest {
 		controller.listagem();
 		
 		// then
-		verify(business).loadAll();
+		verify(repository).loadAll();
 		verify(result).include("artistaList", new ArrayList<Artista>());
 	}
 
@@ -95,7 +95,7 @@ public class ArtistaControllerTest {
 		controller.remover(artista);
 
 		// then
-		verify(business).remove(artista);
+		verify(repository).remove(artista);
 		verify(result).include("message", "Artista removido com sucesso!");
 	}
 
@@ -108,7 +108,7 @@ public class ArtistaControllerTest {
 		controller.salvar(artista);
 		
 		// then
-		artista = verify(business).save(artista);
+		artista = verify(repository).save(artista);
 		verify(result).include("message", "Artista salvo com sucesso!");
 	}
 

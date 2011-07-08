@@ -14,9 +14,9 @@ import org.mockito.Spy;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.Localization;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.wbotelhos.movy.business.FilmeBusiness;
 import br.com.wbotelhos.movy.controller.FilmeController;
 import br.com.wbotelhos.movy.model.Filme;
+import br.com.wbotelhos.movy.repository.FilmeRepository;
 
 public class FilmeControllerTest {
 
@@ -27,7 +27,7 @@ public class FilmeControllerTest {
 	private Result result = new MockResult();
 
 	@Mock
-	private FilmeBusiness business;
+	private FilmeRepository repository;
 
 	@Mock
 	Localization localization;
@@ -35,7 +35,7 @@ public class FilmeControllerTest {
 	@Before
 	public void setUp() throws IOException {
 		MockitoAnnotations.initMocks(this);
-		controller = new FilmeController(result, business);
+		controller = new FilmeController(result, repository);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class FilmeControllerTest {
 		controller.editar(filme);
 
 		//then
-		filme = verify(business).loadById(filme.getId());
+		filme = verify(repository).loadById(filme.getId());
 		verify(result).include("filme", filme);
 	}
 
@@ -60,7 +60,7 @@ public class FilmeControllerTest {
 		controller.editar(filme);
 
 		//then
-		filme = verify(business).loadById(filme.getId());
+		filme = verify(repository).loadById(filme.getId());
 		verify(result).include("filme", filme);
 	}
 
@@ -72,7 +72,7 @@ public class FilmeControllerTest {
 		controller.listagem();
 		
 		// then
-		verify(business).loadAll();
+		verify(repository).loadAll();
 		verify(result).include("filmeList", new ArrayList<Filme>());
 	}
 
@@ -95,7 +95,7 @@ public class FilmeControllerTest {
 		controller.remover(filme);
 
 		// then
-		verify(business).remove(filme);
+		verify(repository).remove(filme);
 		verify(result).include("message", "Filme removido com sucesso!");
 	}
 
@@ -108,7 +108,7 @@ public class FilmeControllerTest {
 		controller.salvar(filme);
 		
 		// then
-		filme = verify(business).save(filme);
+		filme = verify(repository).save(filme);
 		verify(result).include("message", "Filme salvo com sucesso!");
 	}
 

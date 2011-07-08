@@ -14,9 +14,9 @@ import org.mockito.Spy;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.Localization;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.wbotelhos.movy.business.UsuarioBusiness;
 import br.com.wbotelhos.movy.controller.UsuarioController;
 import br.com.wbotelhos.movy.model.Usuario;
+import br.com.wbotelhos.movy.repository.UsuarioRepository;
 
 public class UsuarioControllerTest {
 
@@ -27,7 +27,7 @@ public class UsuarioControllerTest {
 	private Result result = new MockResult();
 
 	@Mock
-	private UsuarioBusiness business;
+	private UsuarioRepository repository;
 
 	@Mock
 	Localization localization;
@@ -35,7 +35,7 @@ public class UsuarioControllerTest {
 	@Before
 	public void setUp() throws IOException {
 		MockitoAnnotations.initMocks(this);
-		controller = new UsuarioController(result, business);
+		controller = new UsuarioController(result, repository);
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class UsuarioControllerTest {
 		controller.editar(usuario);
 
 		//then
-		usuario = verify(business).loadById(usuario.getId());
+		usuario = verify(repository).loadById(usuario.getId());
 		verify(result).include("usuario", usuario);
 	}
 
@@ -60,7 +60,7 @@ public class UsuarioControllerTest {
 		controller.editar(usuario);
 
 		//then
-		usuario = verify(business).loadById(usuario.getId());
+		usuario = verify(repository).loadById(usuario.getId());
 		verify(result).include("usuario", usuario);
 	}
 
@@ -72,7 +72,7 @@ public class UsuarioControllerTest {
 		controller.listagem();
 		
 		// then
-		verify(business).loadAll();
+		verify(repository).loadAll();
 		verify(result).include("usuarioList", new ArrayList<Usuario>());
 	}
 
@@ -95,7 +95,7 @@ public class UsuarioControllerTest {
 		controller.remover(usuario);
 
 		// then
-		verify(business).remove(usuario);
+		verify(repository).remove(usuario);
 		verify(result).include("message", "Usuário removido com sucesso!");
 	}
 
@@ -108,7 +108,7 @@ public class UsuarioControllerTest {
 		controller.salvar(usuario);
 		
 		// then
-		usuario = verify(business).save(usuario);
+		usuario = verify(repository).save(usuario);
 		verify(result).include("message", "Usuário salvo com sucesso!");
 	}
 

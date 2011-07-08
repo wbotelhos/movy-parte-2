@@ -7,37 +7,37 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.wbotelhos.movy.business.ArtistaBusiness;
 import br.com.wbotelhos.movy.model.Artista;
+import br.com.wbotelhos.movy.repository.ArtistaRepository;
 
 @Resource
 public class ArtistaController {
 
-	private final ArtistaBusiness artistaBusiness;
+	private final ArtistaRepository repository;
 	private final Result result;
 
-	public ArtistaController(Result result, ArtistaBusiness artistaBusiness) {
+	public ArtistaController(Result result, ArtistaRepository repository) {
 		this.result = result;
-		this.artistaBusiness = artistaBusiness;
+		this.repository = repository;
 	}
 
 	@Get("/artista/{artista.id}/editar")
 	public void editar(Artista artista) {
-	  artista = artistaBusiness.loadById(artista.getId());
+	  artista = repository.loadById(artista.getId());
 
 	  result.include("artista", artista).forwardTo(this).novo();
 	}
 
 	@Get("/artista/{artista.id}")
 	public void exibir(Artista artista) {
-		artista = artistaBusiness.loadById(artista.getId());
+		artista = repository.loadById(artista.getId());
 
 		result.include("artista", artista);
 	}
 
 	@Get("/artista")
 	public void listagem() {
-		Collection<Artista> artistaList = artistaBusiness.loadAll();
+		Collection<Artista> artistaList = repository.loadAll();
 
 		result.include("artistaList", artistaList);
 	}
@@ -49,7 +49,7 @@ public class ArtistaController {
 
 	@Delete("/artista/{artista.id}")
 	public void remover(Artista artista) {
-	  artistaBusiness.remove(artista);
+	  repository.remove(artista);
 
 	  result
 	  .include("message", "Artista removido com sucesso!")
@@ -58,7 +58,7 @@ public class ArtistaController {
 
 	@Post("/artista")
 	public void salvar(Artista artista) {
-		artista = artistaBusiness.save(artista);
+		artista = repository.save(artista);
 
 		result
 		.include("message", "Artista salvo com sucesso!")

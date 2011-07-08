@@ -5,8 +5,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 		<title><decorator:title default="Movy | A Movie Manager"/></title>
 
-		<script type="text/javascript" src="<c:url value='/js/jquery-1.5.1.js'/>"></script>
-		<script type="text/javascript" src="<c:url value='/js/jquery-ui-1.8.11.js'/>"></script>
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css"/>
+		<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui-1.8.14.css"/>
+
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.8.14.min.js"></script>
 	</head>
 	<body>
 		<div id="topo"><jsp:include page="../../topo.jsp" /></div>

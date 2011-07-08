@@ -1,5 +1,8 @@
-WebContent/WEB-INF/classes
 classes
-build
 dist
-movie.war
+WebContent/WEB-INF/classes
+
+.DS_Store
+
+*.class
+*.war

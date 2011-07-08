@@ -1,44 +1,25 @@
-<!DOCTYPE html>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Movy | Filme [exibir]</title>
+</head>
+<body>
+	<h2>${filme.titulo}</h2>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	(${filme.tituloOriginal} - ${filme.genero} - ${filme.ano})<br/>
 
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Movy | Filme [exibir]</title>
-	</head>
-	<body>
-		<a href="${pageContext.request.contextPath}/">In&iacute;cio</a> |
-		<a href="${pageContext.request.contextPath}/filme">Filmes</a> |
-		<a href="${pageContext.request.contextPath}/filme/novo">Novo Filme</a> |
-		<a href="${pageContext.request.contextPath}/artista">Artistas</a> |
-		<a href="${pageContext.request.contextPath}/artista/novo">Novo Artista</a> |
-		<a href="${pageContext.request.contextPath}/usuario">Usu&aacute;rios</a> |
-		<a href="${pageContext.request.contextPath}/usuario/novo">Novo Usu&aacute;rio</a><br/><br/>
+	${filme.sinopse}
 
-		<c:if test="${not empty message}">
-			${message}<br/><br/>
-		</c:if>
+	<form action="${pageContext.request.contextPath}/filme/${filme.id}" method="get">
+		<input type="submit" value="exibir"/>
+	</form>
 
-		<h2>${filme.titulo}</h2>
+	<form action="${pageContext.request.contextPath}/filme/${filme.id}/editar" method="get">
+		<input type="submit" value="editar"/>
+	</form>
 
-		(${filme.tituloOriginal} - ${filme.genero} - ${filme.ano})<br/>
+	<form action="${pageContext.request.contextPath}/filme/${filme.id}" method="post">
+		<input type="hidden" name="_method" value="delete"/>
 
-		${filme.sinopse}
-
-		<form action="${pageContext.request.contextPath}/filme/${filme.id}" method="get">
-			<input type="submit" value="exibir"/>
-		</form>
-
-		<form action="${pageContext.request.contextPath}/filme/${filme.id}/editar" method="get">
-			<input type="submit" value="editar"/>
-		</form>
-
-		<form action="${pageContext.request.contextPath}/filme/${filme.id}" method="post">
-			<input type="hidden" name="_method" value="delete"/>
-
-			<input type="submit" value="remover"/>
-		</form>
-	</body>
-</html>
+		<input type="submit" value="remover"/>
+	</form>
+</body>

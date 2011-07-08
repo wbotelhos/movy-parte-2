@@ -22,9 +22,26 @@
 			</select><br/><br/>
 
 			<label>Nascimento:</label>
-			<input type="text" name="artista.nascimento" value="${artista.nascimento}"/><br/><br/>
+			<input id="datepicker" type="text" name="artista.nascimento" value="<fmt:formatDate value='${artista.nascimento}' type='date' pattern='dd/MM/yyyy'/>"/><br/><br/>
 
 			<input type="submit" value="salvar"/>
 		</form>
 	</fieldset>
+
+	<script type="text/javascript">
+		$(function() {
+			console.log('Ready! (:');
+
+		    $('input#datepicker').datepicker({
+	        	dateFormat: 'dd/mm/yy',
+	         	changeMonth: true,
+	         	changeYear: true,
+	         	minDate: '-90Y',
+	         	maxDate: '-7Y',
+	         	showOn: 'button',
+				buttonImage: '${pageContext.request.contextPath}/img/calendario.png',
+				buttonImageOnly: true				         	
+	      	});
+		});
+	</script>
 </body>

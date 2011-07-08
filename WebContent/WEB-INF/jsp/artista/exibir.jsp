@@ -4,7 +4,7 @@
 <body>
 	<h2>${artista.nome}</h2>
 
-	(${artista.sexo.label} - ${artista.nascimento})<br/><br/>
+	(${artista.sexo.label} - <fmt:formatDate value='${artista.nascimento}' type='date' pattern='dd/MM/yyyy'/>)<br/><br/>
 
 	<form action="${pageContext.request.contextPath}/artista/${artista.id}" method="get">
 		<input type="submit" value="exibir"/>

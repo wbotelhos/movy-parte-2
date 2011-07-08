@@ -9,6 +9,9 @@
     <div id="menu"><jsp:include page="../../menu.jsp" /></div>
 
     <div id="conteudo">
+		<c:if test="${not empty error}">${error}</c:if>
+		<c:if test="${not empty message}">${message}</c:if>
+
        <decorator:body/>
     </div>
 

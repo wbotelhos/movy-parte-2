@@ -4,6 +4,8 @@
 <body>
 	<h2>${artista.nome}</h2>
 
+	(${artista.sexo.label} - ${artista.nascimento})<br/><br/>
+
 	<form action="${pageContext.request.contextPath}/artista/${artista.id}" method="get">
 		<input type="submit" value="exibir"/>
 	</form>

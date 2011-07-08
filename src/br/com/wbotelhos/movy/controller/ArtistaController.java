@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.wbotelhos.movy.model.Artista;
+import br.com.wbotelhos.movy.model.common.TipoSexo;
 import br.com.wbotelhos.movy.repository.ArtistaRepository;
 
 @Resource
@@ -43,8 +44,8 @@ public class ArtistaController {
 	}
 
 	@Get("/artista/novo")
-	public void novo() {
-
+	public TipoSexo[] novo() {
+		return TipoSexo.values();
 	}
 
 	@Delete("/artista/{artista.id}")
